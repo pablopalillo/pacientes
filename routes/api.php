@@ -30,3 +30,6 @@ Route::resource('institutions','institutionsController');
 Route::resource('physiologicalParameters', 'physiologicalParametersController');
 
 Route::resource('exerciseRoutines', 'exerciseRoutinesController');
+
+// Auth Routes
+Auth::routes();

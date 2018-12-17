@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
@@ -35,5 +37,52 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    /**
+     * Login
+     * Por defecto existe un metodo Auth:login, pero solo para web.
+     * Para que funcione como API, debemos sobreescribir el comportamiento
+     * del metodo login. 
+     */
+    public function login(Request $request)
+    {
+        $response = array(
+                        "response" => 0,
+                        "code" => null,
+                        "error" => null
+                    );
+        try {
+
+            if ( Auth::attempt(
+                ['email' => $request->input('email'),
+                 'password' => $request->input('password')])
+            ) {
+
+                if (Auth::user()) {
+                    $userAuth = Auth::user();
+
+                    /** Respuesta para usuario valido */
+                    return response()->json(Auth::user());
+                } 
+                
+            }
+
+            /** Respuesta para usuario no valido */
+            $response["response"] = 0;
+            $response["error"] = "Usuario no valido";
+            $response["code"]  = 401;
+
+            return response()->json($response);
+
+          
+        } catch (Exception $e) {
+
+            $response["response"] = 0;
+            $response["error"] = "Server error";
+            $response["code"] = 500;
+            
+            return response()->json($response);
+        }
     }
 }
