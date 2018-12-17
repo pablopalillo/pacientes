@@ -63,7 +63,14 @@ class LoginController extends Controller
                     $userAuth = Auth::user();
 
                     /** Respuesta para usuario valido */
-                    return response()->json(Auth::user());
+                    $response["response"] = 1;
+                    $response["code"] = 200;
+
+                    $response["id"] = $userAuth->id;
+                    $response["name"] = $userAuth->name;
+                    $response["email"] = $userAuth->email;
+                
+                    return response()->json($response);
                 } 
                 
             }
