@@ -38,7 +38,7 @@ class Patient extends Model
 
     public function DocumentType()
     {
-     return $this->belongsTo('App\DocumentType');
+     return $this->belongsTo('App\DocumentType', 'document_type_id');
     }
 
 

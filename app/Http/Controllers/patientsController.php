@@ -16,7 +16,7 @@ class patientsController extends Controller
     public function index()
     {
         
-        $patients = Patient::All()->toArray();
+        $patients = Patient::with('DocumentType')->get()->toArray();
 
         return response()->json($patients);
     }
@@ -74,7 +74,7 @@ class patientsController extends Controller
      */
     public function show($id)
     {
-    $patient = Patient::find($id);
+    $patient = Patient::with('DocumentType')->find($id);
 
     if(!$patient){
      return response()->json(['No existe',404]);   

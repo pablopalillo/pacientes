@@ -12,9 +12,9 @@ class DocumentType extends Model
 
     protected $fillable=['document_type_id','document_type_name','document_type_description'];
 
-     protected $hidden =['created_at','updated_at'];
+    protected $hidden =['created_at','updated_at'];
 
-     	public function Patiens()
+    public function Patiens()
 	{
 		return $this->hasMany('App\Patient');
 	}
