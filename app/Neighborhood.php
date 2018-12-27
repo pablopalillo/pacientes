@@ -21,7 +21,7 @@ class Neighborhood extends Model
 		return $this->belongsTo('App\City');
 	}
 
-		public function Patiens()
+	public function Patiens()
 	{
 		return $this->hasMany('App\Patient');
 	}

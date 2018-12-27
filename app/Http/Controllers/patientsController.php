@@ -16,7 +16,7 @@ class patientsController extends Controller
     public function index()
     {
         
-        $patients = Patient::with('DocumentType')->get()->toArray();
+        $patients = Patient::with('DocumentType', 'Neighborhood')->get()->toArray();
 
         return response()->json($patients);
     }
@@ -74,7 +74,7 @@ class patientsController extends Controller
      */
     public function show($id)
     {
-    $patient = Patient::with('DocumentType')->find($id);
+    $patient = Patient::with('DocumentType', 'Neighborhood')->find($id);
 
     if(!$patient){
      return response()->json(['No existe',404]);   
@@ -104,7 +104,7 @@ class patientsController extends Controller
      */
     public function update(Request $request, $id)
     {
-                $patient_id= request( 'patient_id');
+        $patient_id= request( 'patient_id');
         $patient_first_name=request('patient_first_name');
         $patient_second_name=request( 'patient_second_name');
         $patient_first_lastname=request( 'patient_first_lastname');

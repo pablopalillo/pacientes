@@ -32,7 +32,7 @@ class Patient extends Model
 
     public function Neighborhood()
     {
-     return $this->belongsTo('App\Neighborhood');
+     return $this->belongsTo('App\Neighborhood', 'neighborhood_id');
     }
 
 
@@ -40,8 +40,6 @@ class Patient extends Model
     {
      return $this->belongsTo('App\DocumentType', 'document_type_id');
     }
-
-
 
     public function Gender()
     {
