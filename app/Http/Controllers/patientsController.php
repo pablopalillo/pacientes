@@ -39,13 +39,14 @@ class patientsController extends Controller
      */
     public function store(Request $request)
     {
-          try{ 
+    
+    try{ 
        $patients = Patient::create([
-        'patient_id'=>request( 'patient_id'),
+       // 'patient_id'=>request( 'patient_id'),
         'patient_first_name'=>request( 'patient_first_name'),
         'patient_second_name'=>request( 'patient_second_name'),
         'patient_first_lastname'=>request( 'patient_first_lastname'),
-        'patient_second_lastname'=>request( 'patient_second_lastname'),
+        'patient_second_lastname'=>request( 'patient_first_lastname'),
         'patient_document'=>request('patient_document'),
         'patient_age'=>request( 'patient_age'),
         'patient_address'=>request( 'patient_address'),
