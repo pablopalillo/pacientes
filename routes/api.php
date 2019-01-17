@@ -31,5 +31,8 @@ Route::resource('physiologicalParameters', 'physiologicalParametersController');
 
 Route::resource('exerciseRoutines', 'exerciseRoutinesController');
 
+// Histories
+Route::resource('medicalHistories', 'patientsMedicalHistoriesController');
+
 // Auth Routes
 Auth::routes();

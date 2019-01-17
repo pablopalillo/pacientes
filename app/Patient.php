@@ -8,7 +8,6 @@ class Patient extends Model
 {
     protected $table = 'patients';
 
-
 	protected $primaryKey ='patient_id';
 	
     protected $fillable = [
@@ -46,5 +45,10 @@ class Patient extends Model
      return $this->belongsTo('App\Gender');
     }
 
+
+    public function History()
+	{
+		return $this->hasMany('App\Patient_medical_history');
+	}
 
 }
