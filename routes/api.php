@@ -33,6 +33,7 @@ Route::resource('exerciseRoutines', 'exerciseRoutinesController');
 
 // Histories
 Route::resource('medicalHistories', 'patientsMedicalHistoriesController');
+Route::resource('diseases', 'DiseasesController');
 
 // Auth Routes
 Auth::routes();
